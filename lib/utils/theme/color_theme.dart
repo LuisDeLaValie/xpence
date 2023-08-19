@@ -10,6 +10,6 @@ final themeLight = ThemeData(
 final themedark = ThemeData(
   useMaterial3: true,
   colorScheme: darkColorScheme,
-  scaffoldBackgroundColor: darkColorScheme.inversePrimary,
+  // scaffoldBackgroundColor: darkColorScheme.inversePrimary,
   // buttonTheme: ButtonThemeData(buttonColor: ),
 );
