@@ -18,14 +18,14 @@ class _LoginViewState extends State<LoginView> {
     return SingleChildScrollView(
       child: SizedBox(
         height:MediaQuery.of(context).size.height-40,
-        child: Column(
+        child: const Column(
           children: [
-            const SizedBox(height: 80),
-            const Cabesera(),
-            const SizedBox(height: 50),
+            SizedBox(height: 80),
+            Cabesera(),
+            SizedBox(height: 50),
             Formulario(),
-            const Spacer(),
-            const Food(),
+            Spacer(),
+            Food(),
           ],
         ),
       ),

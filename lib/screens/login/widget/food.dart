@@ -16,7 +16,7 @@ class Food extends StatelessWidget {
             "Developed by - @emilianoelano\nemiliswilis.com",
             style: textTheme.labelSmall,
           ),
-          trailing: Icon(Icons.home),
+          trailing: const Icon(Icons.home),
           onTap: () {
             launchUrl(
               Uri.parse(
@@ -30,7 +30,7 @@ class Food extends StatelessWidget {
             "Designed by - @g4bri3l\ndribbble.com/gabriellll",
             style: textTheme.labelSmall,
           ),
-          trailing: Icon(Icons.home),
+          trailing: const Icon(Icons.home),
           onTap: () {
             launchUrl(
               Uri.parse("https://www.linkedin.com/in/devgabs/"),

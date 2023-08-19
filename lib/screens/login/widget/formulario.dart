@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Formulario extends StatefulWidget {
-  Formulario({Key? key}) : super(key: key);
+  const Formulario({Key? key}) : super(key: key);
 
   @override
   State<Formulario> createState() => _FormularioState();
