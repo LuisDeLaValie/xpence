@@ -97,7 +97,7 @@ class _GraficasState extends State<Graficas> {
   DateTimeAxis chartSemana() {
     final dateNow = DateTime.now();
     final weekday = dateNow.weekday;
-    final semana = ["Lun", "Mar", "Mir", "Jue", "Vie", "Sab", "Dom"];
+    final semana = ["L", "M", "M", "J", "V", "S", "D"];
 
     final max = dateNow.add(Duration(days: weekday - 7));
     final min = dateNow.subtract(Duration(days: weekday));
@@ -107,7 +107,6 @@ class _GraficasState extends State<Graficas> {
       maximum: max,
       minimum: min,
       axisLine: const AxisLine(color: Colors.transparent),
-      // lines
       axisLabelFormatter: (axisLabelRenderArgs) {
         final auxFecha = DateTime.fromMillisecondsSinceEpoch(
             axisLabelRenderArgs.value as int);
