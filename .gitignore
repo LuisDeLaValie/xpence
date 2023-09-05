@@ -1,3 +1,6 @@
+
+test/database/lock
+
 # Miscellaneous
 *.class
 *.log
