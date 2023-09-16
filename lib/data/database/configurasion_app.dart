@@ -17,9 +17,8 @@ class ConfiguracionApp {
     _box.put('nombre_user', val);
   }
 
-  DateTime get fechaInicio =>
-      _box.get('fecha_inicio', defaultValue: DateTime.now());
-  set fechaInicio(DateTime val) {
+  DateTime? get fechaInicio => _box.get('fecha_inicio');
+  set fechaInicio(DateTime? val) {
     _box.put('fecha_inicio', val);
   }
 

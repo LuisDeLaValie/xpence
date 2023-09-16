@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:xpence/utils/theme/color_theme.dart';
 
+import 'data/database/hive_db.dart';
 import 'router/router.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  strartHive();
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -13,8 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-late RouterXpence xrouter;
+  late RouterXpence xrouter;
 
   @override
   void initState() {
@@ -25,13 +29,11 @@ late RouterXpence xrouter;
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-       theme: themedark,
+      debugShowCheckedModeBanner: false,
+      theme: themedark,
       title: 'Xpence',
-        routerConfig: xrouter.router,
-      );
-    
+      routerConfig: xrouter.router,
+    );
   }
 }
