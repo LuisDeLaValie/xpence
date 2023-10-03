@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../data/database/configurasion_app.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/login/login_screen.dart';
+import 'handlers/movimineto_handler.dart';
 
 part 'handlers/login_handler.dart';
 part 'handlers/home_handler.dart';
@@ -19,6 +20,12 @@ class RouterXpence {
           name: 'home',
           path: "/",
           builder: homeHandler,
+          redirect: _redirect,
+        ),
+        GoRoute(
+          name: 'moviminto',
+          path: "/moviminto",
+          builder: movimintoHandler,
           redirect: _redirect,
         ),
         GoRoute(

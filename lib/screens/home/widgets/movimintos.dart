@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tdtxle_data_format/date_time_extents.dart';
 import 'package:tdtxle_data_format/number_extents.dart';
@@ -49,7 +49,14 @@ class _MovimintosState extends State<Movimintos> {
                         style: inEg ? textButtonOpaco : textButton)),
                 const Spacer(),
                 IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.calendar_month))
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    "assets/icons/canlendario.svg",
+                    height: 15,
+                    width: 15,
+                    colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                  ),
+                )
               ],
             ),
             Expanded(

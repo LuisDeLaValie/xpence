@@ -5,6 +5,11 @@ import 'color_schemes.dart';
 final themeLight = ThemeData(
   useMaterial3: true,
   colorScheme: lightColorScheme,
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: lightColorScheme.onPrimary
+    ),
+  ),
 );
 
 final themedark = ThemeData(
