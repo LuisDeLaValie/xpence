@@ -43,8 +43,9 @@ class _FormularioState extends State<Formulario> {
             ),
             validator: (value) {
               if ((value ?? "").isEmpty) return "Ingrese un monto inicial";
-              if (double.tryParse(value ?? "") == null)
+              if (double.tryParse(value ?? "") == null) {
                 return "Solo se puede ingresar numeros";
+              }
 
               return null;
             },

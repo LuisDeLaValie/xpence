@@ -37,6 +37,9 @@ dependencies:
   hive_flutter: ^1.1.0
   syncfusion_flutter_charts: ^22.2.9
   url_launcher: ^6.1.12
+  tdtxle_data_format:
+    git:
+      url: https://github.com/LuisDeLaValie/tdtxle_data_format.git
 
 dev_dependencies:
   build_runner: ^2.4.6

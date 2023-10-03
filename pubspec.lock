@@ -589,6 +589,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "22.2.9"
+  tdtxle_data_format:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "7eda2e2ae62ab293c1c60eaae53f2952ad530f56"
+      url: "https://github.com/LuisDeLaValie/tdtxle_data_format.git"
+    source: git
+    version: "0.0.1"
   term_glyph:
     dependency: transitive
     description:
