@@ -7,7 +7,7 @@ import '../models/tag_model.dart';
 
 Future<void> strartHive() async {
   await Hive.initFlutter();
-  openBoxes();
+  await openBoxes();
 }
 
 Future<void> openBoxes() async {
@@ -24,4 +24,5 @@ Future<void> openBoxes() async {
 
   Hive.registerAdapter(TagModelAdapter());
   await Hive.openBox<TagModel>("tag_box");
+
 }

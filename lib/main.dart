@@ -4,8 +4,8 @@ import 'package:xpence/utils/theme/color_theme.dart';
 import 'data/database/hive_db.dart';
 import 'router/router.dart';
 
-void main() {
-  strartHive();
+Future<void> main() async {
+  await strartHive();
 
   runApp(const MyApp());
 }
