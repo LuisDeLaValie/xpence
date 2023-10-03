@@ -11,9 +11,10 @@ class HomeView extends StatelessWidget {
     return const Column(
       children: [
         Expanded(child: Gatsos()),
+        Divider(height: 1,endIndent: 20),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.symmetric(horizontal: 15,vertical: 1),
             child: Movimintos(),
           ),
         ),
