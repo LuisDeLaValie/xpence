@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
+
+import '../../../data/database/configurasion_app.dart';
+import '../../../data/models/movimiento_model.dart';
 
 class Formulario extends StatefulWidget {
   const Formulario({Key? key}) : super(key: key);
@@ -38,8 +43,9 @@ class _FormularioState extends State<Formulario> {
             ),
             validator: (value) {
               if ((value ?? "").isEmpty) return "Ingrese un monto inicial";
-              if (double.tryParse(value ?? "") == null) return "Solo se puede ingresar numeros";
-              
+              if (double.tryParse(value ?? "") == null)
+                return "Solo se puede ingresar numeros";
+
               return null;
             },
             onSaved: (newValue) => montoInicial = double.parse(newValue!),
@@ -59,6 +65,23 @@ class _FormularioState extends State<Formulario> {
   void onContinuar() {
     if (_key.currentState!.validate()) {
       _key.currentState!.save();
+
+      final hoy = DateTime.now();
+      final comf = ConfiguracionApp();
+
+      comf.nombreUser = nombre;
+      comf.fechaInicio = hoy;
+
+      final movimintoInicial = MovimientoModel(
+        monto: montoInicial,
+        creado: hoy,
+        tipo: true,
+      );
+
+      final box = Hive.box<MovimientoModel>("movimnito_box");
+      box.add(movimintoInicial);
+
+      context.goNamed("home");
     }
   }
 }
