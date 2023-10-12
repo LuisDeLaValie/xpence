@@ -17,17 +17,18 @@ class RouterXpence {
       initialLocation: "/",
       routes: [
         GoRoute(
-          name: 'home',
-          path: "/",
-          builder: homeHandler,
-          redirect: _redirect,
-        ),
-        GoRoute(
-          name: 'moviminto',
-          path: "/moviminto",
-          builder: movimintoHandler,
-          redirect: _redirect,
-        ),
+            name: 'home',
+            path: "/",
+            builder: homeHandler,
+            redirect: _redirect,
+            routes: [
+              GoRoute(
+                name: 'moviminto',
+                path: "moviminto",
+                builder: movimintoHandler,
+                redirect: _redirect,
+              ),
+            ]),
         GoRoute(
           name: 'login',
           path: "/login",
