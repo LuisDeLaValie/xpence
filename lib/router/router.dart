@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../data/database/configurasion_app.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/login/login_screen.dart';
+import 'handlers/calendario_handler.dart';
 import 'handlers/movimineto_handler.dart';
 
 part 'handlers/login_handler.dart';
@@ -26,6 +27,12 @@ class RouterXpence {
                 name: 'moviminto',
                 path: "moviminto",
                 builder: movimintoHandler,
+                redirect: _redirect,
+              ),
+              GoRoute(
+                name: 'calendario',
+                path: "calendario",
+                builder: calendarioHandler,
                 redirect: _redirect,
               ),
             ]),
