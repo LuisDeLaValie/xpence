@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -59,7 +58,7 @@ class _MovimintosState extends State<Movimintos> {
                     height: 15,
                     width: 15,
                     colorFilter:
-                        ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   ),
                 )
               ],

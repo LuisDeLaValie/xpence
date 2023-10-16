@@ -16,7 +16,7 @@ class Calendario extends StatefulWidget {
 
   final void Function(DateTime) onDateChanged;
 
-  Calendario({
+  const Calendario({
     Key? key,
     this.initialDate,
     required this.firstDate,
@@ -95,7 +95,7 @@ class _CalendarioState extends State<Calendario> {
             children: [
               Text(
                 df.format(_currentDate),
-                style: TextStyle(fontSize: 30),
+                style: const TextStyle(fontSize: 30),
               ),
               const Spacer(),
               IconButton(
@@ -150,7 +150,7 @@ class _CalendarioState extends State<Calendario> {
     int ultimodia = 0;
 
     while (aux.month == _currentDate.month) {
-      table[aux.weekMonth - 1].children![aux.weekday - 1] =
+      table[aux.weekMonth - 1].children[aux.weekday - 1] =
           celdas(aux, widget.cellStyle);
       ultimodia = aux.day;
       aux = aux.add(const Duration(days: 1));
@@ -165,13 +165,13 @@ class _CalendarioState extends State<Calendario> {
         [];
 
     for (var item in listas) {
-      table[item.weekMonth - 1].children![item.weekday - 1] =
+      table[item.weekMonth - 1].children[item.weekday - 1] =
           celdas(item, widget.markedcell);
     }
 
     if (_selectedDate != null) {
       table[_selectedDate!.weekMonth - 1]
-              .children![_selectedDate!.weekday - 1] =
+              .children[_selectedDate!.weekday - 1] =
           celdas(_selectedDate!, widget.onCellStyle);
     }
 

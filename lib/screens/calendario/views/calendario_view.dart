@@ -1,12 +1,11 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
-import 'package:tdtxle_data_format/date_time_extents.dart';
 import 'package:xpence/utils/widget/calendario/calendario.dart';
 
 class CalendarioView extends StatefulWidget {
   const CalendarioView({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CalendarioViewState createState() => _CalendarioViewState();
 }
 
@@ -22,7 +21,6 @@ CalendarioStyle calendarioStyle = CalendarioStyle(
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Calendario(
@@ -55,7 +53,7 @@ CalendarioStyle calendarioStyle = CalendarioStyle(
           border: Border.all(color: colorScheme.onPrimary, width: 1),
           borderRadius: BorderRadius.circular(9),
         ),
-        style: TextStyle(fontSize: 10),
+        style: const TextStyle(fontSize: 10),
       ),
     );
 

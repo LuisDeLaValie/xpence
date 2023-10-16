@@ -24,11 +24,9 @@ class FormularioView extends StatelessWidget {
                 hintText: "Monto",
               ),
               validator: (value) {
-                if (value?.isEmpty ?? true)
-                  return "El campo no puede ser vacio";
+                if (value?.isEmpty ?? true) return "El campo no puede ser vacio";
 
-                if (double.tryParse(value ?? "") == null)
-                  return "Ingrese un dato numerico";
+                if (double.tryParse(value ?? "") == null) return "Ingrese un dato numerico";
 
                 return null;
               },

@@ -23,7 +23,7 @@ class HeaderVew extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Añadir movimiento"),
+                    const Text("Añadir movimiento"),
                     Text(
                       "Nuevo",
                       style: textTheme.displayMedium,

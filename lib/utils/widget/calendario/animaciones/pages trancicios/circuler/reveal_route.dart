@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'CircularRevealClipper.dart';
+import 'circular_reveal_clipper.dart';
 /// Since the clipper is not exported from circular_reveal_animation package
 /// You will need to get that separately.
 
