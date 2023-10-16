@@ -15,8 +15,10 @@ class Gatsos extends StatelessWidget {
       valueListenable: Hive.box<MovimientoModel>('movimnito_box').listenable(),
       builder: (context, box, widget) {
         final hoy = DateTime.now();
-        List<SalesData> data =
-            box.values.map((e) => SalesData(e.creado!, e.monto)).toList();
+        List<SalesData> data = box.values
+            .map((e) => SalesData(
+                e.creado!, (e.tipo ?? false) ? 1 * e.monto : -1 * e.monto))
+            .toList();
 
         final semana = data.where(
           (element) =>

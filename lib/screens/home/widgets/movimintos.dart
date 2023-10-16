@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -31,10 +33,9 @@ class _MovimintosState extends State<Movimintos> {
     return ValueListenableBuilder<Box<MovimientoModel>>(
       valueListenable: Hive.box<MovimientoModel>('movimnito_box').listenable(),
       builder: (context, box, widget) {
-        final movimintos = box.values
-            .where((element) => element.tipo = inEg)
-            .take(20)
-            .toList();
+        Iterable<MovimientoModel> movimintos = box.values.toList().reversed;
+
+        movimintos = movimintos.where((element) => element.tipo == !inEg);
 
         return Column(
           children: [
@@ -51,14 +52,14 @@ class _MovimintosState extends State<Movimintos> {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-
                     context.goNamed("calendario");
                   },
                   icon: SvgPicture.asset(
                     "assets/icons/canlendario.svg",
                     height: 15,
                     width: 15,
-                    colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                    colorFilter:
+                        ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   ),
                 )
               ],
@@ -67,7 +68,7 @@ class _MovimintosState extends State<Movimintos> {
               child: ListView.builder(
                 itemCount: movimintos.length,
                 itemBuilder: (context, index) {
-                  final element = movimintos[0];
+                  final element = movimintos.elementAt(index);
                   final showColor = index % 2 == 0;
 
                   return Container(

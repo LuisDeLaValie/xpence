@@ -20,10 +20,10 @@ class MovimintosScreen extends StatelessWidget {
           colorScheme: lightColorScheme.copyWith(
           ),
         ),
-        child: const Scaffold(
+        child:  Scaffold(
           body: SafeArea(
             child: Column(
-              children: [HeaderVew(), FormularioView()],
+              children: [const HeaderVew(), FormularioView()],
             ),
           ),
         ),
