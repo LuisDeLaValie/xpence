@@ -29,7 +29,7 @@ class MovimintosView extends StatelessWidget {
                 DateTime(value.year, value.month, value.day + 1),
                 DateTime(value.year, value.month, value.day),
               ),
-            );
+            ).toList().reversed;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,

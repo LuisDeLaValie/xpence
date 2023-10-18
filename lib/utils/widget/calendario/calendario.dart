@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:tdtxle_data_format/date_time_extents.dart';
 
 class Calendario extends StatefulWidget {
@@ -36,13 +35,13 @@ class Calendario extends StatefulWidget {
 
 class _CalendarioState extends State<Calendario> {
   final List<String> dias = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sabado',
+    'Domingo'
   ];
 
   late DateTime _currentDate;
@@ -57,7 +56,6 @@ class _CalendarioState extends State<Calendario> {
 
   late List<TableRow> table;
 
-  final df = DateFormat('MMMM yyyy ');
 
   Widget celdas(DateTime date, CalendarioStyle? style) {
     return TableCell(
@@ -94,7 +92,7 @@ class _CalendarioState extends State<Calendario> {
           Row(
             children: [
               Text(
-                df.format(_currentDate),
+                _currentDate.format("Mmm Y"),
                 style: const TextStyle(fontSize: 30),
               ),
               const Spacer(),

@@ -17,7 +17,9 @@ class CalendarioScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start   ,
               children: [
+                const Text("Calendario de gastos y pagos programados"),
                 const CalendarioView(),
                 Divider(height: 25,color: Theme.of(context).colorScheme.onPrimary,),
                 const Expanded(child: MovimintosView())
