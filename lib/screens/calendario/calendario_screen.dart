@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import 'provider/calendario_provider.dart';
@@ -32,9 +33,12 @@ class CalendarioScreen extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
-          icon: SvgPicture.asset("assets/icons/ant-design_clock-circle-outlined.svg"),
-          label: Text("Planear gasto"),
+          onPressed: () {
+            context.goNamed("planeado");
+          },
+          icon: SvgPicture.asset(
+              "assets/icons/ant-design_clock-circle-outlined.svg"),
+          label: const Text("Planear gasto"),
         ),
       ),
     );

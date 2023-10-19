@@ -15,12 +15,8 @@ class MovimintosScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MontoProvider(),
       child: Theme(
-        data: themeLight.copyWith(
-          
-          colorScheme: lightColorScheme.copyWith(
-          ),
-        ),
-        child:  Scaffold(
+        data: themeLight,
+        child: Scaffold(
           body: SafeArea(
             child: Column(
               children: [const HeaderVew(), FormularioView()],

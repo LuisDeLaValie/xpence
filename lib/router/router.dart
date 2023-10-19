@@ -30,11 +30,18 @@ class RouterXpence {
                 redirect: _redirect,
               ),
               GoRoute(
-                name: 'calendario',
-                path: "calendario",
-                builder: calendarioHandler,
-                redirect: _redirect,
-              ),
+                  name: 'calendario',
+                  path: "calendario",
+                  builder: calendarioHandler,
+                  redirect: _redirect,
+                  routes: [
+                    GoRoute(
+                      name: 'planeado',
+                      path: "planeado",
+                      builder: PlanearPagosHandler,
+                      redirect: _redirect,
+                    ),
+                  ]),
             ]),
         GoRoute(
           name: 'login',
