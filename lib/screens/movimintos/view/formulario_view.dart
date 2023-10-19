@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -24,9 +25,11 @@ class FormularioView extends StatelessWidget {
                 hintText: "Monto",
               ),
               validator: (value) {
-                if (value?.isEmpty ?? true) return "El campo no puede ser vacio";
+                if (value?.isEmpty ?? true)
+                  return "El campo no puede ser vacio";
 
-                if (double.tryParse(value ?? "") == null) return "Ingrese un dato numerico";
+                if (double.tryParse(value ?? "") == null)
+                  return "Ingrese un dato numerico";
 
                 return null;
               },
@@ -51,10 +54,11 @@ class FormularioView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                    onPressed: () {
-                      context.pop();
-                    },
-                    icon: const Icon(Icons.smart_button)),
+                  onPressed: () {
+                    context.pop();
+                  },
+                  icon: SvgPicture.asset("assets/icons/cancel_button.svg"),
+                ),
                 const SizedBox(width: 10),
                 ElevatedButton(
                     onPressed: () {
