@@ -14,7 +14,12 @@ final themeLight = ThemeData(
     ),
   ),
   inputDecorationTheme: _impust.copyWith(
-    hintStyle:  TextStyle(color: const Color(0xFF0A45FA).withOpacity(0.56)),
+    hintStyle: TextStyle(color: const Color(0xFF0A45FA).withOpacity(0.56)),
+  ),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(100),
+    ),
   ),
 );
 
@@ -25,6 +30,11 @@ final themedark = ThemeData(
     style: TextButton.styleFrom(foregroundColor: darkColorScheme.onPrimary),
   ),
   inputDecorationTheme: _impust,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(100),
+    ),
+  ),
 );
 
 const _impust = InputDecorationTheme(
