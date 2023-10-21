@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:xpence/utils/theme/color_theme.dart';
 
 import 'data/database/hive_db.dart';
+import 'data/services/notificacion_services.dart';
 import 'router/router.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await strartHive();
+  await initNotifications();
 
   runApp(const MyApp());
 }
