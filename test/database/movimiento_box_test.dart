@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:xpence/data/database/boxes.dart';
@@ -32,7 +34,7 @@ Future<void> main() async {
     var movimineto = mov.findOne((p0) => p0.id == id);
 
     expect(movimineto, isA<MovimientoModel>());
-    print(
+    log(
         " { id:${movimineto?.id}, monto:${movimineto?.monto}, detalles:${movimineto?.detalles} ,:${movimineto?.tags?.length}  }");
   });
 
@@ -41,6 +43,6 @@ Future<void> main() async {
 
     expect(movimineto, isA<List<MovimientoModel>>());
     expect(movimineto.length, greaterThanOrEqualTo(1));
-    print(movimineto.length);
+    log(movimineto.length.toString());
   });
 }

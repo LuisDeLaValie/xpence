@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:xpence/utils/theme/color_schemes.dart';
 
 import '../../utils/theme/color_theme.dart';
 import 'provider/monto_provider.dart';

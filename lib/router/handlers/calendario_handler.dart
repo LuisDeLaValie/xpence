@@ -7,6 +7,6 @@ Widget calendarioHandler(BuildContext context, GoRouterState state) {
   return const CalendarioScreen();
 }
 
-Widget PlanearPagosHandler(BuildContext context, GoRouterState state) {
+Widget planearPagosHandler(BuildContext context, GoRouterState state) {
   return const PagoPlaneadoScreen();
 }

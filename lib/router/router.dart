@@ -38,7 +38,7 @@ class RouterXpence {
                     GoRoute(
                       name: 'planeado',
                       path: "planeado",
-                      builder: PlanearPagosHandler,
+                      builder: planearPagosHandler,
                       redirect: _redirect,
                     ),
                   ]),
