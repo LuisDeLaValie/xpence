@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xpence/utils/theme/color_theme.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 import 'data/database/hive_db.dart';
 import 'data/services/notificacion_services.dart';
@@ -8,8 +9,10 @@ import 'router/router.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  tz.initializeTimeZones();
+
   await strartHive();
-  await initNotifications();
+  await NotificacionServices.initNotifications();
 
   runApp(const MyApp());
 }

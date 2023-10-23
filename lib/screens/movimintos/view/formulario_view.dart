@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:tdtxle_data_format/number_extents.dart';
 import 'package:xpence/data/services/notificacion_services.dart';
 
 import '../provider/monto_provider.dart';
@@ -69,7 +70,15 @@ class FormularioView extends StatelessWidget {
                         _key.currentState!.save();
 
                         pr.agregarMoviminto();
-                        mostrarNotificacion();
+                        // mostrarNotificacion();
+                        NotificacionServices.mostrarNotificacion(
+                          "Moviminto creado",
+                          "se genero un ${pr.isEgreso?'ingrego':'egreso'} de ${pr.monto.toMOney()}"
+                        );
+                        NotificacionServices.notificacionProgramada(
+                          "Moviminto creado",
+                          "se genero un ${pr.isEgreso?'ingrego':'egreso'} de ${pr.monto.toMOney()}"
+                        );
                         context.pop();
                       }
                     },
