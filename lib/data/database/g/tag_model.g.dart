@@ -18,18 +18,21 @@ class TagModelAdapter extends TypeAdapter<TagModel> {
     };
     return TagModel(
       id: fields[0] as String?,
-      tag: fields[1] as String,
+      tag: fields[2] as String,
+      creado: fields[1] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, TagModel obj) {
     writer
+      ..writeByte(3)
       ..writeByte(2)
+      ..write(obj.tag)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.tag);
+      ..write(obj.creado);
   }
 
   @override

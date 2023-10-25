@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tdtxle_data_format/date_time_extents.dart';
 import 'package:tdtxle_data_format/number_extents.dart';
+import 'package:xpence/data/database/boxes.dart';
 
 import '../../../data/models/movimiento_model.dart';
 
@@ -30,7 +31,7 @@ class _MovimintosState extends State<Movimintos> {
         .copyWith(fontWeight: FontWeight.bold, color: colorOpaco);
 
     return ValueListenableBuilder<Box<MovimientoModel>>(
-      valueListenable: Hive.box<MovimientoModel>('movimnito_box').listenable(),
+      valueListenable: MovimientoBox().box.listenable(),
       builder: (context, box, widget) {
         Iterable<MovimientoModel> movimintos = box.values.toList().reversed;
 

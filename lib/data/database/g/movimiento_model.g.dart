@@ -21,7 +21,7 @@ class MovimientoModelAdapter extends TypeAdapter<MovimientoModel> {
       monto: fields[2] as double,
       detalles: fields[3] as String?,
       creado: fields[1] as DateTime?,
-      tags: (fields[4] as List?)?.cast<TagModel>(),
+      tags: (fields[4] as HiveList?)?.castHiveList(),
       tipo: fields[5] as bool?,
     );
   }

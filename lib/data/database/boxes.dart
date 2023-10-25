@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:xpence/data/models/creditos_model.dart';
 import 'package:xpence/data/models/suscripciones_model.dart';
 import 'package:xpence/data/models/tag_model.dart';
@@ -31,9 +31,13 @@ abstract class HiveBox<T> {
   Box<T> get box => this._box;
 
   Future<String> inserOne(T value) async {
-    final key = DateTime.now().millisecondsSinceEpoch.toString();
+    final fecha = DateTime.now();
+    final key = fecha.millisecondsSinceEpoch.toString();
+
     var auxval = value as ModelBasHive;
     auxval.id = key;
+    auxval.creado = fecha;
+
     await box.put(key, auxval as T);
     return key;
   }

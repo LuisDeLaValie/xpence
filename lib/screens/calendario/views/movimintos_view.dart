@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tdtxle_data_format/date_time_extents.dart';
 import 'package:tdtxle_data_format/number_extents.dart';
+import 'package:xpence/data/database/boxes.dart';
 import 'package:xpence/data/models/movimiento_model.dart';
 
 import '../provider/calendario_provider.dart';
@@ -22,7 +23,7 @@ class MovimintosView extends StatelessWidget {
       builder: (context, value, child) {
         return ValueListenableBuilder<Box<MovimientoModel>>(
           valueListenable:
-              Hive.box<MovimientoModel>('movimnito_box').listenable(),
+              MovimientoBox().box.listenable(),
           builder: (context, box, widget) {
             final list = box.values.where(
               (element) => element.creado!.between(

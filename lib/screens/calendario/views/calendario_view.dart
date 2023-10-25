@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:xpence/data/models/movimiento_model.dart';
 import 'package:xpence/utils/widget/calendario/calendario.dart';
 
+import '../../../data/database/boxes.dart';
 import '../provider/calendario_provider.dart';
 
 class CalendarioView extends StatefulWidget {
@@ -27,7 +28,7 @@ class _CalendarioViewState extends State<CalendarioView> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return ValueListenableBuilder<Box<MovimientoModel>>(
-      valueListenable: Hive.box<MovimientoModel>('movimnito_box').listenable(),
+      valueListenable: MovimientoBox().box.listenable(),
       builder: (context, box, widget) {
         /* final data = box.values.where((element) => element.creado!.between(
             DateTime(currentDate.year, currentDate.month, 1),

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:xpence/data/database/boxes.dart';
 
 import '../../../data/models/movimiento_model.dart';
 import 'graficas.dart';
@@ -12,7 +13,7 @@ class Gatsos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<MovimientoModel>>(
-      valueListenable: Hive.box<MovimientoModel>('movimnito_box').listenable(),
+      valueListenable: MovimientoBox().box.listenable(),
       builder: (context, box, widget) {
         final hoy = DateTime.now();
         List<SalesData> data = box.values

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
 
 import 'model_bas_hive.dart';
@@ -28,4 +29,9 @@ class CreditosModel extends ModelBasHive {
   })  : assert(pagoD < 31 && pagoD > 1,
             "el dima de pago no puede ser mayor a 31 y menor de 1"),
         assert(pago > 0, "el pago no puede ser un monto negativo");
+
+  @override
+  String toString() {
+    return 'CreditosModel(id: $id, creado: $creado, credito: $credito, pago: $pago, corteD: $corteD, pagoD: $pagoD, monto: $monto)';
+  }
 }

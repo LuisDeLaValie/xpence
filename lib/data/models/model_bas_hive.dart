@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-abstract class ModelBasHive {
+abstract class ModelBasHive extends HiveObject {
   @HiveField(0)
   String? id;
   @HiveField(1)

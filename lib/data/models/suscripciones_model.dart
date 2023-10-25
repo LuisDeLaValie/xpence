@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:hive/hive.dart';
 
 import 'model_bas_hive.dart';
@@ -27,4 +28,9 @@ class SuscripcionesModel extends ModelBasHive {
         assert(pago > 0, "el pago no puede ser un monto negativo");
 
   // Hive fields go here
+
+  @override
+  String toString() {
+    return 'SuscripcionesModel(id: $id, creado: $creado, suscripcion: $suscripcion, pago: $pago, pagoD: $pagoD, activa: $activa)';
+  }
 }

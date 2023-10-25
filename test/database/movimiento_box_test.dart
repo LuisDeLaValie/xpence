@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -16,13 +15,16 @@ Future<void> main() async {
   final tag = TagBox();
   String? id;
   test('insert', () async {
-    await tag.inserOne(TagModel(tag: "Pagos"));
-    await tag.inserOne(TagModel(tag: "comida"));
+    tag.inserOne(TagModel(tag: "Pagos"));
+    tag.inserOne(TagModel(tag: "comida"));
+
+    final tags = HiveList<TagModel>(tag.box, objects: tag.box.values.toList());
+
     id = await mov.inserOne(
       MovimientoModel(
         monto: 129,
         detalles: "Spotify",
-        tags: tag.findMany((p0) => true),
+        tags: tags,
         creado: DateTime.now(),
       ),
     );
@@ -34,8 +36,7 @@ Future<void> main() async {
     var movimineto = mov.findOne((p0) => p0.id == id);
 
     expect(movimineto, isA<MovimientoModel>());
-    log(
-        " { id:${movimineto?.id}, monto:${movimineto?.monto}, detalles:${movimineto?.detalles} ,:${movimineto?.tags?.length}  }");
+    log(" { id:${movimineto?.id}, monto:${movimineto?.monto}, detalles:${movimineto?.detalles} ,:${movimineto?.tags?.length}  }");
   });
 
   test('findMany', () {
