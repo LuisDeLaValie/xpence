@@ -15,10 +15,12 @@ class MovimintosScreen extends StatelessWidget {
       create: (context) => MontoProvider(),
       child: Theme(
         data: themeLight,
-        child: Scaffold(
+        child: const Scaffold(
           body: SafeArea(
-            child: Column(
-              children: [const HeaderVew(), FormularioView()],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [HeaderVew(), FormularioView()],
+              ),
             ),
           ),
         ),

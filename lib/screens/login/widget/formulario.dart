@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive/hive.dart';
+import 'package:xpence/data/database/boxes.dart';
 
 import '../../../data/database/configurasion_app.dart';
 import '../../../data/models/movimiento_model.dart';
@@ -80,8 +80,8 @@ class _FormularioState extends State<Formulario> {
         tipo: true,
       );
 
-      final box = Hive.box<MovimientoModel>("movimnito_box");
-      box.add(movimintoInicial);
+      final box = MovimientoBox();
+      box.inserOne(movimintoInicial);
 
       context.goNamed("home");
     }

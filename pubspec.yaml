@@ -40,6 +40,11 @@ dependencies:
   tdtxle_data_format:
     git:
       url: https://github.com/LuisDeLaValie/tdtxle_data_format.git
+  tdtxle_inputs_flutter:
+    git:
+      url: https://github.com/LuisDeLaValie/tdtxle_inputs_flutter.git
+      tag: 1.2.7+2
+
   flutter_svg: ^2.0.7
   provider: ^6.0.5
   flutter_local_notifications: ^16.1.0
