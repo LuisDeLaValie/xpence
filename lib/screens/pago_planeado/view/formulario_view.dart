@@ -86,37 +86,36 @@ class _FormularioViewState extends State<FormularioView> {
                 (newValue ?? "").isEmpty ? "Nuevo movimiento" : newValue!,
           ),
           const SizedBox(height: 10),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-                border: Border.all(color: theme.primary),
-                borderRadius: BorderRadius.circular(30)),
-            child: DropdownButton<TipoClase>(
-              value: balor,
-              // icon: const Icon(Icons.arrow_downward),
-              borderRadius: BorderRadius.circular(30),
-              elevation: 16,
-              style: const TextStyle(),
-              underline: Container(),
-              onChanged: (TipoClase? value) => setState(() => balor = value!),
-              items: lista.map<DropdownMenuItem<TipoClase>>((TipoClase value) {
-                return DropdownMenuItem<TipoClase>(
-                  value: value,
-                  child: Text(
-                    value.nTipo,
-                    style: TextStyle(color: theme.primary),
-                  ),
-                );
-              }).toList(),
+          // Container(
+          //   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          //   decoration: BoxDecoration(
+          //       border: Border.all(color: theme.primary),
+          //       borderRadius: BorderRadius.circular(30)),
+          //   child: DropdownButton<TipoClase>(
+          //     value: balor,
+          //     // icon: const Icon(Icons.arrow_downward),
+          //     borderRadius: BorderRadius.circular(30),
+          //     elevation: 16,
+          //     style: const TextStyle(),
+          //     underline: Container(),
+          //     onChanged: (TipoClase? value) => setState(() => balor = value!),
+          //     items: lista.map<DropdownMenuItem<TipoClase>>((TipoClase value) {
+          //       return DropdownMenuItem<TipoClase>(
+          //         value: value,
+          //         child: Text(
+          //           value.nTipo,
+          //           style: TextStyle(color: theme.primary),
+          //         ),
+          //       );
+          //     }).toList(),
+          //   ),
+          // ),
+          // const SizedBox(height: 10),
+          TextFormField(
+            decoration: const InputDecoration(
+              hintText: "Repetir cada x dias",
             ),
           ),
-          const SizedBox(height: 10),
-          (balor!.tipo != 1)
-              ? TextFormField(
-                  decoration: InputDecoration(hintText: balor!.hintText),
-                  onSaved: (newValue) => pr.cuando = newValue,
-                )
-              : Container(),
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -129,11 +128,16 @@ class _FormularioViewState extends State<FormularioView> {
               ),
               const SizedBox(width: 10),
               ElevatedButton(
-                  onPressed: () async{
+                  onPressed: () async {
                     if (_key.currentState!.validate()) {
                       _key.currentState!.save();
-
-                      await pr.guardarPago();
+                      try {
+                        await pr.guardarPago();
+                        context.pop();
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("Error al crear los moviminentos")));
+                      }
                     }
                   },
                   child: const Text("Agregar"))

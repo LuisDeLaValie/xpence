@@ -22,15 +22,23 @@ class MovimintosView extends StatelessWidget {
       selector: (p0, p1) => p1.selectDate,
       builder: (context, value, child) {
         return ValueListenableBuilder<Box<MovimientoModel>>(
-          valueListenable:
-              MovimientoBox().box.listenable(),
+          valueListenable: MovimientoBox().box.listenable(),
           builder: (context, box, widget) {
-            final list = box.values.where(
-              (element) => element.creado!.between(
-                DateTime(value.year, value.month, value.day + 1),
-                DateTime(value.year, value.month, value.day),
-              ),
-            ).toList().reversed;
+            final list = box.values
+                .where(
+                  (element) {
+                    final after = value.subtract(const Duration(days: 1)).date;
+                    final before = value.add(const Duration(days: 1)).date;
+                        
+                    final fecha = element.creado!;
+
+                    final res = fecha.between(after, before);
+
+                    return res;
+                  },
+                )
+                .toList()
+                .reversed;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +55,9 @@ class MovimintosView extends StatelessWidget {
                     itemCount: list.length,
                     itemBuilder: (context, index) {
                       final element = list.elementAt(index);
+                      final monto = (element.tipo ?? false)
+                          ? element.monto
+                          : element.monto * -1;
 
                       final showColor = index % 2 == 0;
 
@@ -58,7 +69,7 @@ class MovimintosView extends StatelessWidget {
                         child: ListTile(
                           title: Text(element.detalles ?? ""),
                           subtitle: Text(element.creado!.format("D/Mm/y")),
-                          trailing: Text(element.monto.toMOney()),
+                          trailing: Text(monto.toMOney()),
                         ),
                       );
                     },

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -34,8 +33,10 @@ class _MovimintosState extends State<Movimintos> {
       valueListenable: MovimientoBox().box.listenable(),
       builder: (context, box, widget) {
         Iterable<MovimientoModel> movimintos = box.values.toList().reversed;
+        DateTime limiteFecha = DateTime.now().date;
 
-        movimintos = movimintos.where((element) => element.tipo == !inEg);
+        movimintos = movimintos.where((element) =>
+            element.tipo == !inEg && element.creado!.isBefore(limiteFecha));
 
         return Column(
           children: [

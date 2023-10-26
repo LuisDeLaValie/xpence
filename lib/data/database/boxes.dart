@@ -32,11 +32,11 @@ abstract class HiveBox<T> {
 
   Future<String> inserOne(T value) async {
     final fecha = DateTime.now();
-    final key = fecha.millisecondsSinceEpoch.toString();
+    final key = fecha.microsecondsSinceEpoch.toString();
 
     var auxval = value as ModelBasHive;
     auxval.id = key;
-    auxval.creado = fecha;
+    auxval.creado = auxval.creado ?? fecha;
 
     await box.put(key, auxval as T);
     return key;
@@ -45,11 +45,11 @@ abstract class HiveBox<T> {
   Future<void> inserMany(List<T> values) async {
     final aux = values.map((e) {
       final fecha = DateTime.now();
-      final key = fecha.millisecondsSinceEpoch.toString();
+      final key = fecha.microsecondsSinceEpoch.toString();
 
       final aux = e as ModelBasHive;
-      aux.id = key;
-      aux.creado = fecha;
+      aux.id = aux.creado?.microsecondsSinceEpoch.toString() ?? key;
+      aux.creado = aux.creado ?? fecha;
       return aux;
     }).toList();
 
