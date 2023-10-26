@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:tdtxle_data_format/date_time_extents.dart';
 import 'package:xpence/data/models/movimiento_model.dart';
 import 'package:xpence/utils/widget/calendario/calendario.dart';
 
@@ -30,24 +31,9 @@ class _CalendarioViewState extends State<CalendarioView> {
     return ValueListenableBuilder<Box<MovimientoModel>>(
       valueListenable: MovimientoBox().box.listenable(),
       builder: (context, box, widget) {
-        /* final data = box.values.where((element) => element.creado!.between(
-            DateTime(currentDate.year, currentDate.month, 1),
-            DateTime(currentDate.year, currentDate.month + 1, 1)));
+        final data = box.values.map((e) => e.creado!.date).toList();
+        final dataSD = data.toSet().toList();
 
-        List<DateTime> fechas = [];
-
-        for (var element in data) {
-          final day = DateTime(
-            element.creado!.year,
-            element.creado!.month,
-            element.creado!.day,
-          );
-          if (!fechas.contains(day)) {
-            fechas.add(day);
-          }
-        }
- */
-        final data = box.values.map((e) => e.creado!).toList();
         return Calendario(
           firstDate: DateTime(1997),
           lastDate: DateTime(2050),
@@ -55,7 +41,7 @@ class _CalendarioViewState extends State<CalendarioView> {
             context.read<CalendarioProvider>().selectDate = p0;
           },
           initialDate: currentDate,
-          markedDates: data,
+          markedDates: dataSD,
           cellStyle: calendarioStyle.copyWith(
             decoration: BoxDecoration(
               border: Border.all(
@@ -82,31 +68,5 @@ class _CalendarioViewState extends State<CalendarioView> {
         );
       },
     );
-
-    /*   return CalendarDatePicker2(
-      config: CalendarDatePicker2Config(
-        disableModePicker: false,
-        calendarType: CalendarDatePicker2Type.multi,
-        centerAlignModePicker: true,
-        customModePickerIcon: SizedBox(),
-        lastMonthIcon: SizedBox(),
-        nextMonthIcon: SizedBox(),
-        currentDate: currentDate,
-        controlsTextStyle: textTheme.displaySmall,
-        selectedDayHighlightColor: colorScheme.onPrimary,
-        selectedDayTextStyle: textTheme.bodyMedium!.copyWith(color: colorScheme.primary),
-        
-
-      ),
-      value: [
-        DateTime(currentDate.year, currentDate.month, 15),
-        DateTime(currentDate.year, currentDate.month, 30),
-      ],
-      onDisplayedMonthChanged: (value) => setState(() {
-        currentDate = value;
-      }),
-      // onValueChanged: (dates) => _dates = dates,
-    );
-   */
   }
 }

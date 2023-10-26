@@ -56,7 +56,6 @@ class _CalendarioState extends State<Calendario> {
 
   late List<TableRow> table;
 
-
   Widget celdas(DateTime date, CalendarioStyle? style) {
     return TableCell(
       child: InkWell(
@@ -146,7 +145,7 @@ class _CalendarioState extends State<Calendario> {
     DateTime aux = DateTime(_currentDate.year, _currentDate.month);
 
     int ultimodia = 0;
-
+    // generar tabla del calendario
     while (aux.month == _currentDate.month) {
       table[aux.weekMonth - 1].children[aux.weekday - 1] =
           celdas(aux, widget.cellStyle);
@@ -156,20 +155,19 @@ class _CalendarioState extends State<Calendario> {
 
     var listas = widget.markedDates?.where(
           (element) => element.between(
-            DateTime(_currentDate.year, _currentDate.month, ultimodia),
             DateTime(_currentDate.year, _currentDate.month, 1),
+            DateTime(_currentDate.year, _currentDate.month, ultimodia),
           ),
         ) ??
         [];
-
+    // establecer seldas marcadas
     for (var item in listas) {
       table[item.weekMonth - 1].children[item.weekday - 1] =
           celdas(item, widget.markedcell);
     }
-
+    // establecer celda seleccionada
     if (_selectedDate != null) {
-      table[_selectedDate!.weekMonth - 1]
-              .children[_selectedDate!.weekday - 1] =
+      table[_selectedDate!.weekMonth - 1].children[_selectedDate!.weekday - 1] =
           celdas(_selectedDate!, widget.onCellStyle);
     }
 
