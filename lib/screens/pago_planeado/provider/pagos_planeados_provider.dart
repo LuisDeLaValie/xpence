@@ -36,7 +36,6 @@ class PagosPlaneadosProvider with ChangeNotifier {
     }
     await movi.inserMany(movimintot);
 
-    print(this);
   }
 
   @override

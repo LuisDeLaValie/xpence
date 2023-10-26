@@ -51,8 +51,6 @@ class _FormularioViewState extends State<FormularioView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
-
     final pr = context.read<PagosPlaneadosProvider>();
 
     return Form(
@@ -135,8 +133,10 @@ class _FormularioViewState extends State<FormularioView> {
                         await pr.guardarPago();
                         context.pop();
                       } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("Error al crear los moviminentos")));
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text("Error al crear los moviminentos"),
+                        ));
                       }
                     }
                   },

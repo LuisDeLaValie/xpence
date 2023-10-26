@@ -136,8 +136,7 @@ class _FormularioViewState extends State<FormularioView> {
           .map((e) => e..id = "${DateTime.now().millisecondsSinceEpoch}")
           .toList();
 
-      final addtgas = await box.addAll(nuevosTags);
-      print("Seagregaron $addtgas tags ");
+     await box.addAll(nuevosTags);
     }
   }
 }
