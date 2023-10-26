@@ -53,8 +53,8 @@ class _FormularioViewState extends State<FormularioView> {
               decoration: const InputDecoration(
                 hintText: "Descripcion",
               ),
-              onSaved: (newValue) =>
-                  pr.detalles = newValue ?? "Nuevo movimiento",
+              onSaved: (newValue) => pr.detalles =
+                  (newValue ?? "").isEmpty ? "Nuevo movimiento" : newValue!,
             ),
             const SizedBox(height: 10),
             ValueListenableBuilder<Box<TagModel>>(

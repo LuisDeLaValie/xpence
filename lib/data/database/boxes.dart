@@ -42,6 +42,20 @@ abstract class HiveBox<T> {
     return key;
   }
 
+  Future<void> inserMany(List<T> values) async {
+    final aux = values.map((e) {
+      final fecha = DateTime.now();
+      final key = fecha.millisecondsSinceEpoch.toString();
+
+      final aux = e as ModelBasHive;
+      aux.id = key;
+      aux.creado = fecha;
+      return aux;
+    }).toList();
+
+    await box.putAll({for (var e in aux) e.id: e as T});
+  }
+
   T? findOne(bool Function(T) where) {
     try {
       return box.values.firstWhere(where);
