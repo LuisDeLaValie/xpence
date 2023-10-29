@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tdtxle_data_format/date_time_extents.dart';
+import 'package:xpence/utils/cconstantes.dart';
 import 'package:xpence/utils/theme/color_schemes.dart';
 import 'package:xpence/utils/theme/color_theme.dart';
 
@@ -34,8 +35,8 @@ class _ImputFechaState extends State<ImputFecha> {
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2027),
+      firstDate: fechaInicio,
+      lastDate: fechaFinal,
       builder: (context, child) {
         return CalendarioSelect(child: child!);
       },

@@ -93,10 +93,10 @@ class NotificacionServices {
         fecha!.millisecondsSinceEpoch,
       ),
       notificationDetails,
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-          matchDateTimeComponents: DateTimeComponents.time
+          matchDateTimeComponents: DateTimeComponents.dayOfMonthAndTime
     );
   }
 }

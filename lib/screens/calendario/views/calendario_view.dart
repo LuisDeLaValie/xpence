@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tdtxle_data_format/date_time_extents.dart';
 import 'package:xpence/data/models/movimiento_model.dart';
+import 'package:xpence/utils/cconstantes.dart';
 import 'package:xpence/utils/widget/calendario/calendario.dart';
 
 import '../../../data/database/boxes.dart';
@@ -35,8 +36,8 @@ class _CalendarioViewState extends State<CalendarioView> {
         final dataSD = data.toSet().toList();
 
         return Calendario(
-          firstDate: DateTime(1997),
-          lastDate: DateTime(2050),
+          firstDate:fechaInicio,
+          lastDate: fechaFinal,
           onDateChanged: (p0) {
             context.read<CalendarioProvider>().selectDate = p0;
           },
