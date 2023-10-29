@@ -73,9 +73,7 @@ class NotificacionServices {
   }
 
   static Future<void> notificacionProgramada(
-    String? title,
-    String? body,
-  ) async {
+      String? title, String? body, DateTime? fecha) async {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
       'repeating channel id',
@@ -86,20 +84,14 @@ class NotificacionServices {
     const NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
 
-    /* await _flutterLocalNotificationsPlugin.periodicallyShow(
-    0,
-    'repeating title',
-    'repeating body',
-    RepeatInterval.everyMinute,
-    notificationDetails,
-    androidScheduleMode: AndroidScheduleMode.exact,
-  ); */
-
     await _flutterLocalNotificationsPlugin.zonedSchedule(
       0,
       title,
       body,
-      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+      tz.TZDateTime.fromMillisecondsSinceEpoch(
+        tz.local,
+        fecha!.millisecondsSinceEpoch,
+      ),
       notificationDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:

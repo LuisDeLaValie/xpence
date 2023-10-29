@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/pagos_planeados_provider.dart';
+import '../widget/imput_fecha.dart';
 
 class FormularioView extends StatefulWidget {
   const FormularioView({super.key});
@@ -109,11 +110,16 @@ class _FormularioViewState extends State<FormularioView> {
           //   ),
           // ),
           // const SizedBox(height: 10),
-          TextFormField(
+
+          ImputFecha(
             decoration: const InputDecoration(
               hintText: "Repetir cada x dias",
             ),
+            onChanged: (dateTime) {
+              pr.cuando = dateTime;
+            },
           ),
+
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
