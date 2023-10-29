@@ -16,7 +16,7 @@ class Calendario extends StatefulWidget {
   final void Function(DateTime) onDateChanged;
 
   const Calendario({
-    Key? key,
+    super.key,
     this.initialDate,
     required this.firstDate,
     required this.lastDate,
@@ -27,7 +27,7 @@ class Calendario extends StatefulWidget {
     this.markedcell,
     this.markedDates,
     required this.onDateChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<Calendario> createState() => _CalendarioState();

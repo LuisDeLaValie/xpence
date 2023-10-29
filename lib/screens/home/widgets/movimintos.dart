@@ -9,7 +9,7 @@ import 'package:xpence/data/database/boxes.dart';
 import '../../../data/models/movimiento_model.dart';
 
 class Movimintos extends StatefulWidget {
-  const Movimintos({Key? key}) : super(key: key);
+  const Movimintos({super.key});
 
   @override
   State<Movimintos> createState() => _MovimintosState();

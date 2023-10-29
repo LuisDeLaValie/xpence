@@ -9,7 +9,7 @@ import '../../../data/database/boxes.dart';
 import '../provider/calendario_provider.dart';
 
 class CalendarioView extends StatefulWidget {
-  const CalendarioView({Key? key}) : super(key: key);
+  const CalendarioView({super.key});
 
   @override
   // ignore: library_private_types_in_public_api

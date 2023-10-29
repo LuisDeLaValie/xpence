@@ -9,7 +9,7 @@ import 'package:xpence/data/models/movimiento_model.dart';
 import '../provider/calendario_provider.dart';
 
 class MovimintosView extends StatelessWidget {
-  const MovimintosView({Key? key}) : super(key: key);
+  const MovimintosView({super.key});
 
   @override
   Widget build(BuildContext context) {

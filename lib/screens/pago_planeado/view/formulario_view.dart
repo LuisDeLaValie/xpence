@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../provider/pagos_planeados_provider.dart';
 
 class FormularioView extends StatefulWidget {
-  const FormularioView({Key? key}) : super(key: key);
+  const FormularioView({super.key});
 
   @override
   State<FormularioView> createState() => _FormularioViewState();
