@@ -2,12 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:xpence/data/database/boxes.dart';
 import 'package:xpence/data/models/movimiento_model.dart';
+import 'package:xpence/data/services/notificacion_services.dart';
+import 'package:xpence/utils/cconstantes.dart';
 
 class PagosPlaneadosProvider with ChangeNotifier {
   double monto = 0;
   String detalles = "";
   int tipo = 0;
-  dynamic cuando = "";
+  DateTime? cuando;
 
   // void init() async {
   //   notifyListeners();
@@ -17,7 +19,7 @@ class PagosPlaneadosProvider with ChangeNotifier {
     final movi = MovimientoBox();
     bool generar = true;
 
-    DateTime fecha = DateTime.now();
+    DateTime fecha = cuando!;
     List<MovimientoModel> movimintot = [];
 
     while (generar) {
@@ -32,10 +34,20 @@ class PagosPlaneadosProvider with ChangeNotifier {
 
       fecha = DateTime(fecha.year, fecha.month + 1, fecha.day);
 
-      generar = auxYear == fecha.year;
+      generar = auxYear <= fechaFinal.year;
     }
     await movi.inserMany(movimintot);
 
+    NotificacionServices.mostrarNotificacion(
+      "Xpence te notifica",
+      "Xpence te notificara cuando tengas que pagar $detalles",
+    );
+
+    NotificacionServices.notificacionProgramada(
+      "Xpence pago $detalles",
+      "Xpence te recuerda que tienes que pagar $detalles",
+      cuando,
+    );
   }
 
   @override

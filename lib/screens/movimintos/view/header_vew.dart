@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../provider/monto_provider.dart';
 
 class HeaderVew extends StatelessWidget {
-  const HeaderVew({Key? key}) : super(key: key);
+  const HeaderVew({super.key});
 
   @override
   Widget build(BuildContext context) {

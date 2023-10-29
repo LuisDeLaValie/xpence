@@ -8,7 +8,7 @@ import 'views/calendario_view.dart';
 import 'views/movimintos_view.dart';
 
 class CalendarioScreen extends StatelessWidget {
-  const CalendarioScreen({Key? key}) : super(key: key);
+  const CalendarioScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

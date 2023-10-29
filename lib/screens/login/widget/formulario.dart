@@ -6,7 +6,7 @@ import '../../../data/database/configurasion_app.dart';
 import '../../../data/models/movimiento_model.dart';
 
 class Formulario extends StatefulWidget {
-  const Formulario({Key? key}) : super(key: key);
+  const Formulario({super.key});
 
   @override
   State<Formulario> createState() => _FormularioState();

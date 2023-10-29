@@ -6,12 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:tdtxle_data_format/number_extents.dart';
 import 'package:tdtxle_inputs_flutter/inputs_tdtxle.dart';
 import 'package:xpence/data/models/tag_model.dart';
-import 'package:xpence/data/services/notificacion_services.dart';
 
 import '../provider/monto_provider.dart';
 
 class FormularioView extends StatefulWidget {
-  const FormularioView({Key? key}) : super(key: key);
+  const FormularioView({super.key});
 
   @override
   State<FormularioView> createState() => _FormularioViewState();
@@ -83,18 +82,28 @@ class _FormularioViewState extends State<FormularioView> {
                 const SizedBox(width: 10),
                 ElevatedButton(
                     onPressed: () {
-                      if (_key.currentState!.validate()) {
-                        _key.currentState!.save();
+                      try {
+                        if (_key.currentState!.validate()) {
+                          _key.currentState!.save();
 
-                        pr.agregarMoviminto();
-                        // mostrarNotificacion();
-                        NotificacionServices.mostrarNotificacion(
-                            "Moviminto creado",
-                            "se genero un ${pr.isEgreso ? 'ingrego' : 'egreso'} de ${pr.monto.toMOney()}");
-                        NotificacionServices.notificacionProgramada(
-                            "Moviminto creado",
-                            "se genero un ${pr.isEgreso ? 'ingrego' : 'egreso'} de ${pr.monto.toMOney()}");
-                        context.pop();
+                          pr.agregarMoviminto();
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                "se genero un ${pr.isEgreso ? 'ingrego' : 'egreso'} de ${pr.monto.toMOney()}",
+                              ),
+                            ),
+                          );
+
+                          context.pop();
+                        }
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(e.toString()),
+                          ),
+                        );
                       }
                     },
                     child: const Text("Agregar"))
@@ -136,7 +145,7 @@ class _FormularioViewState extends State<FormularioView> {
           .map((e) => e..id = "${DateTime.now().millisecondsSinceEpoch}")
           .toList();
 
-     await box.addAll(nuevosTags);
+      await box.addAll(nuevosTags);
     }
   }
 }

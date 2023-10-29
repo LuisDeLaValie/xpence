@@ -6,7 +6,7 @@ import 'provider/pagos_planeados_provider.dart';
 import 'view/formulario_view.dart';
 
 class PagoPlaneadoScreen extends StatelessWidget {
-  const PagoPlaneadoScreen({Key? key}) : super(key: key);
+  const PagoPlaneadoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import 'view/formulario_view.dart';
 import 'view/header_vew.dart';
 
 class MovimintosScreen extends StatelessWidget {
-  const MovimintosScreen({Key? key}) : super(key: key);
+  const MovimintosScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

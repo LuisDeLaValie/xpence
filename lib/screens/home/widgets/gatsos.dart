@@ -8,7 +8,7 @@ import 'graficas.dart';
 import 'package:tdtxle_data_format/date_time_extents.dart';
 
 class Gatsos extends StatelessWidget {
-  const Gatsos({Key? key}) : super(key: key);
+  const Gatsos({super.key});
 
   @override
   Widget build(BuildContext context) {
