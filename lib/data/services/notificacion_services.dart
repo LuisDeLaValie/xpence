@@ -1,6 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import 'package:timezone/standalone.dart' as tz;
+// import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class NotificacionServices {
   /// intancia del plugin para las notificacions
@@ -94,16 +95,11 @@ class NotificacionServices {
     androidScheduleMode: AndroidScheduleMode.exact,
   ); */
 
-// Obtén la zona horaria de México (Ciudad de México)
-    final mexico = tz.getLocation('America/Mexico_City');
-    final hora = DateTime.now().add(const Duration(seconds: 10));
-
     await _flutterLocalNotificationsPlugin.zonedSchedule(
       0,
       title,
       body,
-      tz.TZDateTime.fromMillisecondsSinceEpoch(
-          mexico, hora.millisecondsSinceEpoch),
+      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
       notificationDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
