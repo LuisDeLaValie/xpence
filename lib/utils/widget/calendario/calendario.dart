@@ -95,11 +95,12 @@ class _CalendarioState extends State<Calendario> {
                 style: const TextStyle(fontSize: 30),
               ),
               const Spacer(),
+              // boton de fecha anterior
               IconButton(
                 icon: const Icon(Icons.chevron_left),
                 onPressed: () {
-                  var data = _currentDate
-                      .subtract(Duration(days: (32 - _currentDate.day)));
+                  final  data =
+                      DateTime(_currentDate.year, _currentDate.month - 1);
                   if (data.isAfter(widget.firstDate)) {
                     setState(() {
                       _currentDate = data;
@@ -107,11 +108,13 @@ class _CalendarioState extends State<Calendario> {
                   }
                 },
               ),
+              // boton de fecha siguinte
               IconButton(
                 icon: const Icon(Icons.chevron_right),
                 onPressed: () {
-                  var data =
-                      _currentDate.add(Duration(days: (32 + _currentDate.day)));
+                  final  data =
+                      DateTime(_currentDate.year, _currentDate.month + 1);
+
                   if (data.isBefore(widget.lastDate)) {
                     setState(() {
                       _currentDate = data;
