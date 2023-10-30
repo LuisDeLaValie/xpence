@@ -76,7 +76,6 @@ class _FormularioState extends State<Formulario> {
       final movimintoInicial = MovimientoModel(
         detalles: "Inico ",
         monto: montoInicial,
-        creado: hoy,
         tipo: true,
       );
 

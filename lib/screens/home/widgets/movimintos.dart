@@ -33,10 +33,16 @@ class _MovimintosState extends State<Movimintos> {
       valueListenable: MovimientoBox().box.listenable(),
       builder: (context, box, widget) {
         Iterable<MovimientoModel> movimintos = box.values.toList().reversed;
-        DateTime limiteFecha = DateTime.now().date;
+       
+        final fechainicial = DateTime.now().subtract(const Duration(days: 20)).date;
+        final fechafinal = DateTime.now();
 
-        movimintos = movimintos.where((element) =>
-            element.tipo == !inEg && element.creado!.isBefore(limiteFecha));
+        movimintos = movimintos.where((element) {
+          final tipo = element.tipo == !inEg;
+          final rango = element.creado!.between(fechainicial, fechafinal);
+
+          return tipo && rango;
+        });
 
         return Column(
           children: [
