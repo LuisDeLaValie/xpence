@@ -21,7 +21,18 @@ class CalendarioScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Calendario de gastos y pagos programados"),
+                Row(
+                  children: [
+                    const Text("Calendario de gastos y pagos programados"),
+                    Spacer(),
+                    IconButton(
+                      onPressed: () {
+                        context.pop();
+                      },
+                      icon: SvgPicture.asset("assets/icons/salir_x.svg"),
+                    )
+                  ],
+                ),
                 const CalendarioView(),
                 Divider(
                   height: 25,
