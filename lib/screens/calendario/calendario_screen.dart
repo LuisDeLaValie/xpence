@@ -24,7 +24,7 @@ class CalendarioScreen extends StatelessWidget {
                 Row(
                   children: [
                     const Text("Calendario de gastos y pagos programados"),
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         context.pop();

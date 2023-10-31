@@ -10,6 +10,7 @@ class ImputFecha extends StatefulWidget {
   const ImputFecha({super.key, required this.decoration, this.onChanged});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ImputFechaState createState() => _ImputFechaState();
 }
 
