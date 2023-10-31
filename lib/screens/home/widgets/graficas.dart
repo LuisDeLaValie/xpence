@@ -98,7 +98,9 @@ class _GraficasState extends State<Graficas> {
     final weekday = dateNow.weekday;
     final semana = ["L", "M", "M", "J", "V", "S", "D"];
 
-    final max = dateNow.add(Duration(days: weekday - 7));
+    final daypD = 7 - weekday;
+
+    final max = dateNow.add(Duration(days: daypD));
     final min = dateNow.subtract(Duration(days: weekday));
 
     return DateTimeAxis(

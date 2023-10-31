@@ -15,23 +15,34 @@ class Gatsos extends StatelessWidget {
     return ValueListenableBuilder<Box<MovimientoModel>>(
       valueListenable: MovimientoBox().box.listenable(),
       builder: (context, box, widget) {
-        final hoy = DateTime.now();
         List<SalesData> data = box.values
-            .map((e) => SalesData(
-                e.creado!, (e.tipo ?? false) ? 1 * e.monto : -1 * e.monto))
+            .map(
+              (e) => SalesData(
+                e.creado!,
+                (e.tipo ?? false) ? 1 * e.monto : -1 * e.monto,
+              ),
+            )
             .toList();
 
+        final fechafinal = DateTime.now().add(const Duration(days: 1)).date;
+
         final semana = data.where(
-          (element) =>
-              element.year.between(hoy, hoy.subtract(const Duration(days: 7))),
+          (element) => element.year.between(
+            fechafinal.subtract(const Duration(days: 7)),
+            fechafinal,
+          ),
         );
         final mes = data.where(
-          (element) => element.year
-              .between(hoy, DateTime(hoy.year, hoy.month - 1, hoy.day)),
+          (element) => element.year.between(
+            DateTime(fechafinal.year, fechafinal.month - 1, fechafinal.day),
+            fechafinal,
+          ),
         );
         final year = data.where(
-          (element) => element.year
-              .between(hoy, DateTime(hoy.year - 1, hoy.month, hoy.day)),
+          (element) => element.year.between(
+            DateTime(fechafinal.year - 1, fechafinal.month, fechafinal.day),
+            fechafinal,
+          ),
         );
 
         return CarouselSlider(
