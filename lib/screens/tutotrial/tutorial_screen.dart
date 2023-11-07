@@ -64,7 +64,6 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
     );
-
     return IntroductionScreen(
       key: introKey,
       globalBackgroundColor: Colors.white,
