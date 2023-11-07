@@ -52,6 +52,7 @@ dependencies:
   timezone: ^0.9.2
   flutter_timezone: ^1.0.8
   icons_launcher: ^2.1.4
+  introduction_screen: ^3.1.12
 
 dev_dependencies:
   build_runner: ^2.4.6
@@ -106,3 +107,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+linter:
+  rules:
+    - use_super_parameters
