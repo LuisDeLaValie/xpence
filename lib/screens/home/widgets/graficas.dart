@@ -8,8 +8,7 @@ enum Periodo { week, month, year }
 class Graficas extends StatefulWidget {
   final List<SalesData> data;
   final Periodo periodo;
-  const Graficas({Key? key, required this.data, required this.periodo})
-      : super(key: key);
+  const Graficas({super.key, required this.data, required this.periodo});
 
   @override
   State<Graficas> createState() => _GraficasState();

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'home_view.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,9 @@ class HomeScreen extends StatelessWidget {
         child: HomeView(),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          context.goNamed("moviminto");
+        },
         label: const Text("Movimiento"),
         icon: const Icon(Icons.add),
       ),
