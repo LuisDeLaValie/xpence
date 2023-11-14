@@ -1,56 +1,30 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:go_router/go_router.dart';
 
-void main() => runApp(const TutorialScreen());
-
-class TutorialScreen extends StatelessWidget {
+class TutorialScreen extends StatefulWidget {
   const TutorialScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
-    );
-
-    return MaterialApp(
-      title: 'Tutorial',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const OnBoardingPage(),
-    );
-  }
+  TutorialScreenState createState() => TutorialScreenState();
 }
 
-class OnBoardingPage extends StatefulWidget {
-  const OnBoardingPage({super.key});
-
-  @override
-  OnBoardingPageState createState() => OnBoardingPageState();
-}
-
-class OnBoardingPageState extends State<OnBoardingPage> {
+class TutorialScreenState extends State<TutorialScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  void _onIntroEnd(context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomePage()),
-    );
+  void _onIntroEnd() {
+    context.goNamed("home");
   }
 
-  Widget _buildFullscreenImage() {
-    return Image.asset(
-      'assets/images_tutorial/tut_img',
-      fit: BoxFit.cover,
-      height: double.infinity,
-      width: double.infinity,
-      alignment: Alignment.center,
+  Widget _buildImage(String assetName, [double? width = 350]) {
+    return SafeArea(
+      child: Image.asset(
+        assetName,
+        width: width,
+        fit: BoxFit.contain,
+      ),
     );
-  }
-
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset('assets/$assetName', width: width);
   }
 
   @override
@@ -60,14 +34,17 @@ class OnBoardingPageState extends State<OnBoardingPage> {
     const pageDecoration = PageDecoration(
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
-      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
+      // bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      pageColor: Colors.blue,
       imagePadding: EdgeInsets.zero,
     );
 
     return IntroductionScreen(
       key: introKey,
-      globalBackgroundColor: Colors.white,
+      skip: const Text("Saltar"),
+      next: const Text("Siguiente"),
+      done: const Text("finalizar"),
+      globalBackgroundColor: Colors.blue,
       allowImplicitScrolling: true,
       autoScrollDuration: 3000,
       infiniteAutoScroll: true,
@@ -76,19 +53,8 @@ class OnBoardingPageState extends State<OnBoardingPage> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 16, right: 16),
-            child: _buildImage('flutter.png', 100),
+            child: _buildImage('assets/icon_app.png', 50),
           ),
-        ),
-      ),
-      globalFooter: SizedBox(
-        width: double.infinity,
-        height: 60,
-        child: ElevatedButton(
-          child: const Text(
-            'Empecemos a ahorrar',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-          ),
-          onPressed: () => _onIntroEnd(context),
         ),
       ),
       pages: [
@@ -123,21 +89,6 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           title: "Observa tus gastos",
           body: "Another beautiful body text for this example onboarding",
           image: _buildImage('assets/images_tutorial/tut_img/mock5.png'),
-          footer: ElevatedButton(
-            onPressed: () {
-              introKey.currentState?.animateScroll(0);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-            ),
-            child: const Text(
-              'Empezar',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
           decoration: pageDecoration.copyWith(
             bodyFlex: 6,
             imageFlex: 6,
@@ -145,17 +96,14 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           ),
         ),
       ],
-      onDone: () => _onIntroEnd(context),
-      onSkip: () => _onIntroEnd(context), // You can override onSkip callback
+      onDone: _onIntroEnd,
+      onSkip: _onIntroEnd, // You can override onSkip callback
       showSkipButton: true,
       skipOrBackFlex: 0,
       nextFlex: 0,
       showBackButton: false,
       //rtl: true, // Display as right-to-left
       back: const Icon(Icons.arrow_back),
-      skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
-      next: const Icon(Icons.arrow_forward),
-      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb
@@ -175,18 +123,6 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
       ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text("This is the screen after Introduction")),
     );
   }
 }

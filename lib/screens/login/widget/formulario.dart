@@ -82,7 +82,7 @@ class _FormularioState extends State<Formulario> {
       final box = MovimientoBox();
       box.inserOne(movimintoInicial);
 
-      context.goNamed("home");
+      context.goNamed("intro");
     }
   }
 }

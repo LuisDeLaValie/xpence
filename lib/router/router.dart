@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:xpence/screens/tutotrial/tutorial_screen.dart';
 
 import '../data/database/configurasion_app.dart';
 import '../screens/home/home_screen.dart';
@@ -43,6 +44,12 @@ class RouterXpence {
                     ),
                   ]),
             ]),
+        GoRoute(
+          name: 'intro',
+          path: '/intro',
+          builder: introHandler,
+          redirect: _redirect,
+        ),
         GoRoute(
           name: 'login',
           path: "/login",
