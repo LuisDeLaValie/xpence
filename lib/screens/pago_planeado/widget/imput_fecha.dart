@@ -36,7 +36,7 @@ class _ImputFechaState extends State<ImputFecha> {
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      locale: const Locale('es', 'Mx'),
+      // locale: const Locale('es', 'Mx'),
       firstDate: fechaInicio,
       lastDate: fechaFinal,
       builder: (context, child) {

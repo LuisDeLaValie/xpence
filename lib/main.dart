@@ -40,10 +40,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: themedark,
       title: 'Xpence',
-       supportedLocales: const [
-        Locale('en', 'US'),  // code
-        Locale('es', 'Mx'), // arabic, no country code
-      ],
+     
       routerConfig: xrouter.router,
     );
   }
