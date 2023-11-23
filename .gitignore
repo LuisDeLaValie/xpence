@@ -1,5 +1,6 @@
 
 test/database/lock
+test/integration/database
 
 # Miscellaneous
 *.class

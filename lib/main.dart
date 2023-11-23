@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('es', 'ES')],
+      // supportedLocales: const [Locale('es', 'ES')],
       routerConfig: xrouter.router,
     );
   }

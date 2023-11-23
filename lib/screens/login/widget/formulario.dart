@@ -26,6 +26,7 @@ class _FormularioState extends State<Formulario> {
         mainAxisSize: MainAxisSize.min,
         children: [
           TextFormField(
+            key: Key("Nombre Usuario",),
             decoration: const InputDecoration(
               hintText: "Nombre de usuario",
             ),
@@ -37,6 +38,7 @@ class _FormularioState extends State<Formulario> {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            key: Key("monto inicial",),
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               hintText: "Monto inicial",
@@ -53,6 +55,7 @@ class _FormularioState extends State<Formulario> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
+            key: Key("btn_continuar"),
             onPressed: onContinuar,
             child: const Center(
               child: Text("Continuar"),

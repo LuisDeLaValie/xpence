@@ -4,5 +4,5 @@ Widget homeHandler(BuildContext context, GoRouterState state) {
   return const HomeScreen();
 }
 Widget introHandler(BuildContext context, GoRouterState state) {
-  return const TutorialScreen();
+  return const TutorialScreen(key: Key("Pagina_tutorial"),);
 }
