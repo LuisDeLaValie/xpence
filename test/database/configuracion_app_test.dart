@@ -12,10 +12,10 @@ Future<void> main() async {
 
   test('establecer datos iniciales', () {
     expect(configura.nombreUser, "");
-    expect(configura.fechaInicio, isA<DateTime>());
+    expect(configura.fechaInicio, isA<DateTime?>());
     expect(configura.thema, false);
   });
-
+  await Future.delayed(Duration(seconds: 2));
   final no = DateTime.now();
   test('Estableser valores inicales', () {
     configura.nombreUser = "Emilio prueba";

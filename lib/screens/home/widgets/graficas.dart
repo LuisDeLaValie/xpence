@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tdtxle_data_format/number_extents.dart';
 
 enum Periodo { week, month, year }
 
@@ -51,7 +52,7 @@ class _GraficasState extends State<Graficas> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
-            "\$${monto.toStringAsFixed(2)}",
+            monto.toMOney(),
             style:
                 textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
           ),

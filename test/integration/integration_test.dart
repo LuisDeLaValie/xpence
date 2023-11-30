@@ -67,11 +67,32 @@ Future<void> main() async {
     // expect(find.text('Ingrese un monto inicial'), findsNothing);
   });
 
+
   testWidgets("Pagina Home", (tester) async {
     await tester.pumpWidget(const MaterialApp(
       home: HomeScreen(),
     ));
 
+    // comprovar si existen el twxto
 
+    expect(find.text("Movimiento"), findsOneWidget);
+    
+    expect(find.text("Total de gastos esta semana"), findsOneWidget);
+    // expect(find.text(1500.toMOney()), findsOneWidget);
+    expect(find.text("L"), findsOneWidget);
+    expect(find.text("M"), findsOneWidget);
+    expect(find.text("M"), findsOneWidget);
+    expect(find.text("J"), findsOneWidget);
+    expect(find.text("V"), findsOneWidget);
+    expect(find.text("S"), findsOneWidget);
+    expect(find.text("D"), findsOneWidget);
+
+    expect(find.text("Gastos"), findsOneWidget);
+    expect(find.text("Ingresos"), findsOneWidget);
+
+
+    await tester.tap(find.text("Ingresos"));
+    await tester.pumpAndSettle();
+    expect(find.text("Inicio"), findsOneWidget);
   });
 }
