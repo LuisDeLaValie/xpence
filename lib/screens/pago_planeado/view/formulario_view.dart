@@ -68,8 +68,12 @@ class _FormularioViewState extends State<FormularioView> {
                 return "El campo no puede ser vacio";
               }
 
-              if (double.tryParse(value ?? "") == null) {
+              final monto = double.tryParse(value ?? "");
+              if (monto == null) {
                 return "Ingrese un dato numerico";
+              }
+              if (monto<=0) {
+                return "Asegúrese de que el monto sea mayor a 0";
               }
 
               return null;
@@ -81,6 +85,13 @@ class _FormularioViewState extends State<FormularioView> {
             decoration: const InputDecoration(
               hintText: "Descripcion",
             ),
+            validator: (val){
+
+              if ((val??"").isEmpty) {
+                return "Ingrese una descripción";
+              }
+              return null;
+            },
             onSaved: (newValue) => pr.detalles =
                 (newValue ?? "").isEmpty ? "Nuevo movimiento" : newValue!,
           ),
@@ -113,7 +124,7 @@ class _FormularioViewState extends State<FormularioView> {
 
           ImputFecha(
             decoration: const InputDecoration(
-              hintText: "Repetir cada x dias",
+              hintText: "Dia a recordar",
             ),
             onChanged: (dateTime) {
               pr.cuando = dateTime;

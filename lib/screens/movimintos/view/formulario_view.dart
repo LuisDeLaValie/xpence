@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -39,8 +41,12 @@ class _FormularioViewState extends State<FormularioView> {
                   return "El campo no puede ser vacio";
                 }
 
-                if (double.tryParse(value ?? "") == null) {
+                final monto = double.tryParse(value ?? "");
+                if (monto == null) {
                   return "Ingrese un dato numerico";
+                }
+                if (monto<=0) {
+                  return "Asegúrese de que el monto sea mayor a 0";
                 }
 
                 return null;
@@ -60,7 +66,7 @@ class _FormularioViewState extends State<FormularioView> {
               valueListenable: Hive.box<TagModel>('tag_box').listenable(),
               builder: (context, box, widget) {
                 return ChipFormField<TagModel>(
-                  decoration: const InputDecoration(hintText: "Categoria"),
+                  decoration: const InputDecoration(hintText: "Categoria",helperText: "comida,ropa,jeugos"),
                   onSaved: guardarTagas,
                   onChanged: chaingTag,
                   listaBase: box.values
@@ -99,6 +105,7 @@ class _FormularioViewState extends State<FormularioView> {
                           context.pop();
                         }
                       } catch (e) {
+                        log(e.toString());
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(e.toString()),

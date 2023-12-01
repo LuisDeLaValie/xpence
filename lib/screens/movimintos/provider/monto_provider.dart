@@ -24,10 +24,10 @@ class MontoProvider with ChangeNotifier {
     final hoy = DateTime.now();
 
     HiveList<TagModel>? tags;
-    if ((this.tags ?? []).isEmpty) {
-      final boxtag = Hive.box<TagModel>("tag_box");
-      tags = HiveList<TagModel>(boxtag, objects: this.tags!);
-    }
+    // if ((this.tags ?? []).isNotEmpty) {
+    //   final boxtag = Hive.box<TagModel>("tag_box");
+    //   tags = HiveList<TagModel>(boxtag, objects: this.tags!);
+    // }
 
     final movimintoInicial = MovimientoModel(
       id: hoy.millisecondsSinceEpoch.toString(),
