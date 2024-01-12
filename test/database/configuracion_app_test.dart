@@ -15,7 +15,7 @@ Future<void> main() async {
     expect(configura.fechaInicio, isA<DateTime?>());
     expect(configura.thema, false);
   });
-  await Future.delayed(Duration(seconds: 2));
+  await Future.delayed(const Duration(seconds: 2));
   final no = DateTime.now();
   test('Estableser valores inicales', () {
     configura.nombreUser = "Emilio prueba";
