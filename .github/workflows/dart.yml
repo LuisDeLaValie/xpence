@@ -1,0 +1,50 @@
+name: Flutter Release
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - uses: actions/checkout@v3
+
+      - name: Flutter setup
+        run: |
+          flutter config --set-version 1.2.0
+          flutter doctor
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Run unit tests
+        run: flutter test
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Upload release APK to artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
+
+      - name: Create GitHub release
+        uses: actions/create-release@v3
+        with:
+          tag_name: v${{ github.event.release.tag_name }}
+          release_name: v${{ github.event.release.tag_name }}
+          body: |
+            Release ${{ github.event.release.tag_name }}
+
+            [Download APK](https://github.com/${{ github.repository }}/actions/artifacts/releases/${{ github.event.release.id }}/download/release-apk.apk)
