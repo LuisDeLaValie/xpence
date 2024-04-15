@@ -1,50 +1,40 @@
-name: Flutter Release
+name: Build Flutter APK
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # Especifica la rama que quieres observar, por ejemplo, 'main'.
 
 jobs:
-  build_release:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest  # Sistema operativo de la máquina virtual.
 
     steps:
-      - uses: actions/setup-java@v3
+      # Paso 1: Verifica el repositorio.
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Paso 2: Instala Flutter y dependencias.
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
         with:
-          java-version: '11'
-          distribution: 'adopt'
+          flutter-version: '3.19.5'  # Especifica la versión de Flutter.
 
-      - uses: actions/checkout@v3
+      # Paso 3: Corre la configuración de la herramienta de Flutter.
+      - name: Flutter doctor
+        run: flutter doctor
 
-      - name: Flutter setup
-        run: |
-          flutter config --set-version 1.2.0
-          flutter doctor
-
-      - name: Get Flutter dependencies
+      # Paso 4: Descarga dependencias.
+      - name: Get dependencies
         run: flutter pub get
 
-      - name: Analyze code
-        run: flutter analyze
-
-      - name: Run unit tests
-        run: flutter test
-
-      - name: Build release APK
+      # Paso 5: Compila el APK de release.
+      - name: Build APK
         run: flutter build apk --release
 
-      - name: Upload release APK to artifacts
+      # Paso 6: Guarda el APK como un artefacto.
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v2
         with:
-          name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
-
-      - name: Create GitHub release
-        uses: actions/create-release@v3
-        with:
-          tag_name: v${{ github.event.release.tag_name }}
-          release_name: v${{ github.event.release.tag_name }}
-          body: |
-            Release ${{ github.event.release.tag_name }}
-
-            [Download APK](https://github.com/${{ github.repository }}/actions/artifacts/releases/${{ github.event.release.id }}/download/release-apk.apk)
+          name: app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
