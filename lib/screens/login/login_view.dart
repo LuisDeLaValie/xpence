@@ -5,7 +5,7 @@ import 'widget/food.dart';
 import 'widget/formulario.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();

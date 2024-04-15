@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tdtxle_data_format/number_extents.dart';
 
 enum Periodo { week, month, year }
 
 class Graficas extends StatefulWidget {
   final List<SalesData> data;
   final Periodo periodo;
-  const Graficas({Key? key, required this.data, required this.periodo})
-      : super(key: key);
+  const Graficas({super.key, required this.data, required this.periodo});
 
   @override
   State<Graficas> createState() => _GraficasState();
@@ -52,7 +52,7 @@ class _GraficasState extends State<Graficas> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Text(
-            "\$${monto.toStringAsFixed(2)}",
+            monto.toMOney(),
             style:
                 textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
           ),
@@ -99,7 +99,9 @@ class _GraficasState extends State<Graficas> {
     final weekday = dateNow.weekday;
     final semana = ["L", "M", "M", "J", "V", "S", "D"];
 
-    final max = dateNow.add(Duration(days: weekday - 7));
+    final daypD = 7 - weekday;
+
+    final max = dateNow.add(Duration(days: daypD));
     final min = dateNow.subtract(Duration(days: weekday));
 
     return DateTimeAxis(

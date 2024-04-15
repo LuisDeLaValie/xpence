@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Cabesera extends StatelessWidget {
-  const Cabesera({Key? key}) : super(key: key);
+  const Cabesera({super.key});
 
   @override
   Widget build(BuildContext context) {
